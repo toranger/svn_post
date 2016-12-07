@@ -1,4 +1,4 @@
-µÚÒ»£º1.ÓÃ»§±í
+ç¬¬ä¸€ï¼š1.ç”¨æˆ·è¡¨
 user_id name create_time login_time
 
 create table user_list 
@@ -9,7 +9,7 @@ create_time datetime,
 login_time datetime
 );
 
-2.×éĞÅÏ¢±í
+2.ç»„ä¿¡æ¯è¡¨
 group_id name time count
 
 create table group_list
@@ -20,7 +20,7 @@ time datetime,
 count int unsigned
 );
 
-3.È¨ÏŞ±í
+3.æƒé™è¡¨
 power_id name
 
 create table power_list
@@ -28,7 +28,7 @@ create table power_list
 power_id int unsigned,
 name varchar(20)
 );
-4.ÏîÄ¿±í
+4.é¡¹ç›®è¡¨
 proc_id name time member_count
 
 create table proc_list
@@ -39,7 +39,7 @@ time datetime,
 member_count int unsigned
 );
 
-5.ÓÃ»§Óë×é¹ØÏµ±í
+5.ç”¨æˆ·ä¸ç»„å…³ç³»è¡¨
 id(user_id + group_id) user_id group_id time
 
 create table u_g_relation_list
@@ -49,7 +49,7 @@ user_id int unsigned,
 group_id int unsigned,
 time datetime
 );
-6.ÓÃ»§/×éÈ¨ÏŞ±í
+6.ç”¨æˆ·/ç»„æƒé™è¡¨
 id(pro_id + user_id) user_id/group_id power_id time pro_id 
 
 create table u_g_power_list
@@ -61,7 +61,7 @@ power_id int unsigned,
 time datetime,
 proc_id int unsigned
 );
-7.²Ù×÷±í
+7.æ“ä½œè¡¨
 type_id value
 
 create table operate_type_list
@@ -70,7 +70,7 @@ type_id int unsigned,
 value int
 );
 
-8.Ô­Òò±í
+8.åŸå› è¡¨
 why_id value
 
 create table operate_why_list
@@ -79,7 +79,7 @@ why_id int unsigned,
 value int
 );
 
-9.ÎÄ¼ş±í
+9.æ–‡ä»¶è¡¨
 file_id file_name
 
 create table file_list
@@ -88,7 +88,7 @@ file_id int unsigned,
 file_name varchar(50)
 );
 
-10.Â·¾¶±í
+10.è·¯å¾„è¡¨
 path_id path_name
 
 create table path_list
@@ -97,7 +97,7 @@ path_id int unsigned,
 path_name varchar(50)
 );
 
-11.¼ÇÂ¼±í
+11.è®°å½•è¡¨
 record_id user_id opt_time file_id path_id pro_id why_id type_id
 
 create table record_list
@@ -112,36 +112,36 @@ why_id int unsigned,
 type_id int unsigned
 );
 
-µÚ¶ş£ºserver manager:(µ¥Àı£¬¹Û²ìÕß£¬ÏíÔª)
-CUser, CGroup, CProject, UI, ÍøÂç/½ø³Ì¼äÍ¨ĞÅ·½Ê½£¬kernel
-UI::OninitDlg(kernel::open(Á¬½Ó·şÎñÆ÷ºÍ´´½¨´¦ÀíÏß³Ì))
-kernel£ºOnAddUser£ºnew pack;send(pack);   kernel:thread:recv(data);UI.NotifyAddUser();
+ç¬¬äºŒï¼šserver manager:(å•ä¾‹ï¼Œè§‚å¯Ÿè€…ï¼Œäº«å…ƒ,å°†è¯·æ±‚åšæˆçŠ¶æ€æœºå¤„ç†æœºåˆ¶)
+CUser, CGroup, CProject, UI, ç½‘ç»œ/è¿›ç¨‹é—´é€šä¿¡æ–¹å¼ï¼Œkernel
+UI::OninitDlg(kernel::open(è¿æ¥æœåŠ¡å™¨å’Œåˆ›å»ºå¤„ç†çº¿ç¨‹))
+kernelï¼šOnAddUserï¼šnew pack;send(pack);   kernel:thread:recv(data);UI.NotifyAddUser();
 kernel:close:delete ...;net.close;
-server manager£ºadd user, delete user, add group, delete group, add_pro, delete_pro, join_group, leave_group, set_power
+server managerï¼šadd user, delete user, add group, delete group, add_pro, delete_pro, join_group, leave_group, set_power
 
-µÚÈı£º
+ç¬¬ä¸‰ï¼š
 client:login, logout, get_pro_list, get_sub_pro(file/folder), comminit_pro(file/folder), add_pro(file/folder),
-delete_pro(file/folder), find_history, compare_file, roll_back, update, lock_pro, unlock_pro¡£
-¶àÏß³Ì
+delete_pro(file/folder), find_history, compare_file, roll_back, update, lock_pro, unlock_proã€‚
+å¤šçº¿ç¨‹
 
 
-server£º
+serverï¼š
 
-Êı¾İ´æ´¢£º
-Ìá½»¼ÇÂ¼±í£º
-id    user_id  time  ÏîÄ¿   ÎÄ¼şÏà¶ÔÂ·¾¶   Ô­Òò  ²Ù×÷ÀàĞÍ£¨Ôö¼Ó£¬É¾³ı£¬ĞŞ¸Ä£¬ÏÂÔØ£¬»Ø¹ö£©
+æ•°æ®å­˜å‚¨ï¼š
+æäº¤è®°å½•è¡¨ï¼š
+id    user_id  time  é¡¹ç›®   æ–‡ä»¶ç›¸å¯¹è·¯å¾„   åŸå›   æ“ä½œç±»å‹ï¼ˆå¢åŠ ï¼Œåˆ é™¤ï¼Œä¿®æ”¹ï¼Œä¸‹è½½ï¼Œå›æ»šï¼‰
 
 /xx/xxx/xxxxx/xxxxxxx/aa.txt
 
-ÏîÄ¿/ÎÄ¼ş     ÓÃ»§   ²Ù×÷     ÈÕÆÚ      Ä¿Â¼¡¢ÎÄ¼ş 
+é¡¹ç›®/æ–‡ä»¶     ç”¨æˆ·   æ“ä½œ     æ—¥æœŸ      ç›®å½•ã€æ–‡ä»¶ 
 
-£¨¿ÉÒÔÊ¹ÓÃÈíÁ¬½ÓÎÄ¼şµÄ·½Ê½£¬À´¼È±£Ö¤ÁË²»Í¬ËÑË÷µÄĞ§ÂÊĞèÇó£¬ÓÖ½ÚÊ¡ÁË´ÅÅÌ¿Õ¼ä£©
-12¸÷ÔÂ
-ÎÄ¼şÃû³Æ-²Ù×÷ÀàĞÍ-ÓÃ»§ºÏ³ÉÎÄ¼şÃû³Æ¡£
+ï¼ˆå¯ä»¥ä½¿ç”¨è½¯è¿æ¥æ–‡ä»¶çš„æ–¹å¼ï¼Œæ¥æ—¢ä¿è¯äº†ä¸åŒæœç´¢çš„æ•ˆç‡éœ€æ±‚ï¼ŒåˆèŠ‚çœäº†ç£ç›˜ç©ºé—´ï¼‰
+12å„æœˆ
+æ–‡ä»¶åç§°-æ“ä½œç±»å‹-ç”¨æˆ·åˆæˆæ–‡ä»¶åç§°ã€‚
 
-ÏîÄ¿ÎÄ¼şÄ¿Â¼ÔÙserver´æ´¢£¬ÀúÊ·ÎÄ¼şĞÅÏ¢µÄ´æ´¢£¬Êı¾İ¿âÈçºÎÎ¬»¤¡£
+é¡¹ç›®æ–‡ä»¶ç›®å½•å†serverå­˜å‚¨ï¼Œå†å²æ–‡ä»¶ä¿¡æ¯çš„å­˜å‚¨ï¼Œæ•°æ®åº“å¦‚ä½•ç»´æŠ¤ã€‚
 
-Ö÷¼ü    ÓÃ»§  Ê±¼ä  ²Ù×÷£¨ÔöÉ¾¸Ã£© ÎÄ¼ş£¨´øÂ·¾¶£© ËùÊôÏîÄ¿   Ô­Òò.
+ä¸»é”®    ç”¨æˆ·  æ—¶é—´  æ“ä½œï¼ˆå¢åˆ è¯¥ï¼‰ æ–‡ä»¶ï¼ˆå¸¦è·¯å¾„ï¼‰ æ‰€å±é¡¹ç›®   åŸå› .
 
 
 
